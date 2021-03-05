@@ -1,0 +1,21 @@
+nodetach
+nolock
+/dev/ttyACM1
+115200
+user ""
+password ""
+nocrtscts
+modem
+hide-password
+usepeerdns
+noauth
+noipdefault
+novj
+novjccomp
+noccp
+debug
+defaultroute
+ipcp-accept-local
+ipcp-accept-remote
+connect 'chat -s -v -f /etc/ppp/peers/lara-chat-connect'
+disconnect 'chat -s -v -f /etc/ppp/peers/lara-chat-disconnect'

@@ -1,0 +1,6 @@
+mqtt_hostname: 52.172.212.28
+mqtt_port: 1883
+mqtt_username: mosquittouser
+mqtt_password: uzh8qObGsLhhAnlZX6ZUwKHpn
+mqtt_force_unsecure: true
+gateway_id: ASGU100011

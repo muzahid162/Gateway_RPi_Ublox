@@ -1,0 +1,13 @@
+[Unit]
+Description=Crystal Dial Inter through Ublox Modem
+Requires=getty.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/Gateway_RPi_Ublox/dial_internet.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

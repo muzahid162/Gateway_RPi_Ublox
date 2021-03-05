@@ -1,0 +1,13 @@
+[Unit]
+Description=Crystal Transport Process
+Requires=network.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/local/bin/wm-gw --settings=/home/pi/Gateway_RPi_Ublox/settings.yml
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

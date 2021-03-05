@@ -1,0 +1,13 @@
+[Unit]
+Description=Crystal sink manager for sink connected to /dev/ttyUSB2
+Requires=getty.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/gateway/sink_service/build/sinkService -b 125000 -p /dev/ttyUSB2 -i 3
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
