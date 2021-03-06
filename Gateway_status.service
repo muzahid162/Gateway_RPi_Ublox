@@ -5,6 +5,7 @@ Requires=getty.target
 [Service]
 Type=simple
 User=pi
+WorkingDirectory=/home/pi/Gateway_RPi_Ublox
 ExecStart=/usr/bin/python3 /home/pi/Gateway_RPi_Ublox/Gateway_status.py
 Restart=always
 RestartSec=5
