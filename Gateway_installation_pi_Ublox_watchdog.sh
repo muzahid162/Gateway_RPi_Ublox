@@ -11,6 +11,7 @@ sudo apt-get install ppp screen elinks -y
 sudo apt-get install ppp usb-modeswitch wvdial -y
 sudo chmod 777 /etc/ppp/peers
 git clone https://github.com/muzahid162/Gateway_RPi_Ublox.git
+sudo chmod 777 /home/pi/Gateway_RPi_Ublox
 sudo cp /home/pi/Gateway_RPi_Ublox/com.wirepas.sink.conf /etc/dbus-1/system.d/
 sudo cp /home/pi/Gateway_RPi_Ublox/crystalSink1.service /etc/systemd/system/
 sudo cp /home/pi/Gateway_RPi_Ublox/crystalSink2.service /etc/systemd/system/
