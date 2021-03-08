@@ -19,34 +19,6 @@ GPIO.setup(pulse_pin, GPIO.OUT, initial=GPIO.LOW)
 logging.basicConfig(filename='Gateway_status.log', filemode='a', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.ERROR)
 
 
-def check_internet():
-    global pulse
-    pulse = True
-    while True:
-        internet_count = 0
-        for i in range(6):
-            url = 'http://www.google.com/'
-            timeout = 30
-            try:
-                out = requests.get(url, timeout=timeout)
-                sleep(60)
-            except requests.ConnectionError:
-                internet_count = internet_count + 1
-                if internet_count == 5:
-                    pulse = False
-                    logging.error('Internet Down')
-                    sleep(12)
-                    try:
-                        ser = serial.Serial("/dev/ttyACM0", baudrate=115200, timeout=2)
-                        ser.write(bytes("AT+CPWROFF\r\n", 'utf-8'))
-                        sleep(0.5)
-                        os.system('echo "Crystal@1" | sudo -S shutdown -h now')
-                    except Exception as e:
-                        logging.error(e)
-                        os.system('echo "Crystal@1" | sudo -S shutdown -h now')
-                sleep(60)
-
-
 def check_modem():
     sleep(60)
     modem_count = 0
@@ -61,7 +33,28 @@ def check_modem():
                 port_count = port_count + 1
         if port_count == 6:
             modem_count = 0
-            sleep(60)
+            internet_count = 0
+            for i in range(6):
+                url = 'http://www.google.com/'
+                timeout = 30
+                try:
+                    out = requests.get(url, timeout=timeout)
+                    sleep(30)
+                except requests.ConnectionError:
+                    internet_count = internet_count + 1
+                    if internet_count == 5:
+                        pulse = False
+                        logging.error('Internet Down')
+                        sleep(12)
+                        try:
+                            ser = serial.Serial("/dev/ttyACM0", baudrate=115200, timeout=2)
+                            ser.write(bytes("AT+CPWROFF\r\n", 'utf-8'))
+                            sleep(0.5)
+                            os.system('echo "Crystal@1" | sudo -S shutdown -h now')
+                        except Exception as e:
+                            logging.error(e)
+                            os.system('echo "Crystal@1" | sudo -S shutdown -h now')
+                    sleep(30)
         else:
             modem_count = modem_count + 1
             if modem_count == 5:
@@ -70,7 +63,7 @@ def check_modem():
                 pulse = False
                 sleep(12)
                 os.system('echo "Crystal@1" | sudo -S shutdown -h now')
-            sleep(45)
+            sleep(60)
 
 
 def main_sense():
@@ -108,8 +101,7 @@ def pulse_gen():
         logging.error('Pulse Stopped')
 
 
-t = Thread(target=check_internet)
-t.start()
+
 t = Thread(target=check_modem)
 t.start()
 t = Thread(target=main_sense)
