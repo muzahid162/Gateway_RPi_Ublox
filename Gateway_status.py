@@ -29,7 +29,7 @@ def check_internet():
             timeout = 30
             try:
                 out = requests.get(url, timeout=timeout)
-                sleep(10)
+                sleep(60)
             except requests.ConnectionError:
                 internet_count = internet_count + 1
                 if internet_count == 5:
@@ -44,7 +44,7 @@ def check_internet():
                     except Exception as e:
                         logging.error(e)
                         os.system('echo "Crystal@1" | sudo -S shutdown -h now')
-                sleep(10)
+                sleep(60)
 
 
 def check_modem():
@@ -70,7 +70,7 @@ def check_modem():
                 pulse = False
                 sleep(12)
                 os.system('echo "Crystal@1" | sudo -S shutdown -h now')
-            sleep(60)
+            sleep(45)
 
 
 def main_sense():
