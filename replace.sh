@@ -1,7 +1,5 @@
 #!/bin/bash
 set -e
-sudo rm -r -v /home/pi/Gateway_RPi_Ublox
-git clone https://github.com/muzahid162/Gateway_RPi_Ublox.git
 sudo chmod 777 /home/pi/Gateway_RPi_Ublox
 sudo cp /home/pi/Gateway_RPi_Ublox/Gateway_status.service /etc/systemd/system/
 sudo systemctl enable Gateway_status
