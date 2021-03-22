@@ -4,7 +4,7 @@ sudo chmod 777 /home/pi/Gateway_RPi_Ublox
 sudo cp /home/pi/Gateway_RPi_Ublox/Gateway_status.service /etc/systemd/system/
 sudo systemctl enable Gateway_status
 sudo systemctl start Gateway_status
-sudo rm -r replace.sh
+sudo rm -r /home/pi/replace.sh
 sudo systemctl stop check_internet
 sudo systemctl stop check_modem_port
 sudo systemctl stop main_sense_detect.service
