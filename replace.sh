@@ -17,4 +17,3 @@ sudo rm -r /etc/systemd/system/check_internet.service
 sudo rm -r /etc/systemd/system/check_modem_port.service
 sudo rm -r /etc/systemd/system/main_sense_detect.service
 sudo rm -r /etc/systemd/system/pulse_gen.service
-sudo nano /home/pi/Gateway_RPi_Ublox/settings.yml
