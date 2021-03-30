@@ -21,7 +21,6 @@ logging.basicConfig(filename='Gateway_status.log', filemode='a', format='%(ascti
 
 def check_modem():
     logging.error('Device Powered ON')
-    sleep(60)
     modem_count = 0
     internet_count = 0
     global pulse
