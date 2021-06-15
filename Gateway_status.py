@@ -26,8 +26,8 @@ cpu = CPUTemperature()
 
 
 def check_modem():
-    sleep(60)
     logging.error('Device Powered ON')
+    sleep(60)
     modem_count = 0
     global pulse
     pulse = True
